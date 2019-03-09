@@ -1,0 +1,53 @@
+Working directory <->  Staging Area <-> Git Repository
+
+git config --global user.name/email #config données perso
+git init #initialisation
+git clone <path> "name"  #cloner un depot sur un depot git
+----------------------AJOUTS------------------------------
+
+git add <file> #ajout fichier staging
+git add --all * #ajout tous
+
+git commit -m "message" #commit -> ajout git
+git commit -a -m "mon message" #ajout + commit
+
+git mv "a" "b" 
+git rm <file> 
+----------------------------INFOS------------------------------
+
+git log (-p,--stat --summary) #Historique
+git reflog #Historique en cas de detachement de head (checkout commit)
+git status #Fichier differents entre zones
+git show
+git diff <commit1> <commit2> or diff or --cache(d) (wd <> staging <> git rep)
+-----------------------ACTION DEPOT----------------------------------
+git remote add <name> <url>
+git fetch <path> <branch name> : take a peek -> git log -p HEAD..FETCH_HEAD
+git pull #update
+git push -u origin master
+----------------------------RESET----------------------------
+
+git reset --hard  #deplace HEAD et met à jour staging et workdir, supprime les modifs par rapport au dernier commit
+si v{n} precisé alors le fait depuis cette version
+    	  --mixed #--- et met à jour staging seulement
+	  --soft # --- rien d'autre
+git reset HEAD^ #Annule le dernier commit, mais laisse le répertoire de travail en l'état
+git reset "dirname/" #annule modifs sous dirname/ qui sont dans le staging 
+git revert <id_commit> #revert to rep state at committing time
+
+----------------------BRANCHES--------------------------------------------
+
+git branch "name" (-d) -> git checkout "name = git checkout -b "name"
+git branch #return branches'list
+git checkout "name branch" -> (edit file) -> git commit -a -> git checkout master
+git checkout <> gcout HEAD #staging to working directory
+git checkout "id commit" #HEAD detaché
+git checkout "name branch" v{n} -> HEAD to tag v{n}
+git checkout "name branch" "file" ->  la commande git checkout v1.0.1 accounts écrase le répertoire accounts de votre répertoire de travail avec la version de ce répertoire telle qu'elle était au moment du commit correspondant au tag v1.0.1. 
+
+git rebase
+git merge "branch name" -> git branch -d "name"
+git grep
+git tag
+
+gitk (HEAD..FETCH_HEAD)
